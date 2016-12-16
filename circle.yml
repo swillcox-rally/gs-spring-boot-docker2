@@ -1,4 +1,5 @@
 test:
   post:
     - mkdir $CIRCLE_ARTIFACTS/libs
+    - ls -lta
     - mv libs/*.jar $CIRCLE_ARTIFACTS/libs
