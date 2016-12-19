@@ -1,6 +1,11 @@
+general:
+  artifacts:
+    - "gs-spring-boot-docker-0.1.0.jar" # a single file, relative to the build directory
+
+
+
 test:
   post:
-    - mkdir $CIRCLE_ARTIFACTS/libs
-    - ls -lta
+    #- mkdir $CIRCLE_ARTIFACTS/libs
     #- find . -name '*.jar'
-    - mv ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
+    #- mv ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
