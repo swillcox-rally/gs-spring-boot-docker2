@@ -21,6 +21,7 @@ deployment:
       - ls -lta $CIRCLE_ARTIFACTS/libs
       - echo $CIRCLE_ARTIFACTS
       - find . -name '*.jar'
+      - ls -lta
       - docker build --rm=false -t swillcox/gs-spring-boot-docker .
       - docker login -u $DOCKER_USER -p $DOCKER_PASS
       - docker push swillcox/gs-spring-boot-docker
