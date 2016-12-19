@@ -5,8 +5,8 @@ machine:
 test:
   override:
     #- docker run -d -p 9200:9200 circleci/elasticsearch; sleep 10
-    - docker run -d -p 8080:8080 -t swillcox/gs-spring-boot-docker
-    - curl --retry 10 --retry-delay 5 -v http://localhost:8080
+    #- docker run -d -p 8080:8080 -t swillcox/gs-spring-boot-docker
+    #- curl --retry 10 --retry-delay 5 -v http://localhost:8080
   post:
     - mkdir $CIRCLE_ARTIFACTS/libs
     #- find . -name '*.jar'
