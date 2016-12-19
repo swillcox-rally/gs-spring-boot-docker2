@@ -1,11 +1,27 @@
-general:
-  artifacts:
-    - "gs-spring-boot-docker-0.1.0.jar" # a single file, relative to the build directory
+machine:
+  services:
+    - docker
 
-
+dependencies:
+  override:
+    - docker info
+    - docker build --rm=false -t swillcox/gs-spring-boot-docker .
 
 test:
-  post:
-    #- mkdir $CIRCLE_ARTIFACTS/libs
+  override:
+    #- docker run -d -p 9200:9200 circleci/elasticsearch; sleep 10
+    - ddocker run -d -p 8080:8080 -t swillcox/gs-spring-boot-docker
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8080
+ post:
+    - mkdir $CIRCLE_ARTIFACTS/libs
     #- find . -name '*.jar'
-    #- mv ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
+    - mv ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push swillcox/gs-spring-boot-docker
+
+ 
