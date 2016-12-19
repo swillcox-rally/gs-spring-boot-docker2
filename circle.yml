@@ -5,6 +5,7 @@ machine:
 dependencies:
   override:
     - docker info
+    - find . -name '*.jar'
     - docker build --rm=false -t swillcox/gs-spring-boot-docker .
 
 test:
