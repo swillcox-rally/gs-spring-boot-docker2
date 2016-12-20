@@ -9,20 +9,17 @@ test:
     #- curl --retry 10 --retry-delay 5 -v http://localhost:8080
   post:
     - mkdir $CIRCLE_ARTIFACTS/libs
-    #- find . -name '*.jar'
     - cp ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
-    - ls -lta $CIRCLE_ARTIFACTS/libs
 
 deployment:
   hub:
     branch: master
     commands:
-      - docker info
-      - ls -lta $CIRCLE_ARTIFACTS/libs
-      - echo $CIRCLE_ARTIFACTS
-      - find . -name '*.jar'
-      - ls -lta
-      - ls -R
+      #- docker info
+      #- ls -lta $CIRCLE_ARTIFACTS/libs
+      #- echo $CIRCLE_ARTIFACTS
+      #- find . -name '*.jar'
+      #- ls -R
       - docker build --rm=false -t swillcox/gs-spring-boot-docker .
       - docker login -e steve.willcox@ca.com -u $DOCKER_USER -p $DOCKER_PASS
       - docker push swillcox/gs-spring-boot-docker
