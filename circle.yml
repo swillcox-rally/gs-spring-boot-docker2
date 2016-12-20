@@ -10,7 +10,7 @@ test:
   post:
     - mkdir $CIRCLE_ARTIFACTS/libs
     #- find . -name '*.jar'
-    - mv ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
+    - cp ./target/gs-spring-boot-docker-0.1.0.jar $CIRCLE_ARTIFACTS/libs
     - ls -lta $CIRCLE_ARTIFACTS/libs
 
 deployment:
