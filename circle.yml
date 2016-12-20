@@ -24,7 +24,7 @@ deployment:
       - ls -lta
       - ls -R
       - docker build --rm=false -t swillcox/gs-spring-boot-docker .
-      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - docker login -e steve.willcox@ca.com -u $DOCKER_USER -p $DOCKER_PASS
       - docker push swillcox/gs-spring-boot-docker
 
  
